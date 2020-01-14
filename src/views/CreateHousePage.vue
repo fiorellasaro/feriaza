@@ -91,7 +91,7 @@
               placeholder="Descripción"
             ></textarea>
           </div>
-          <div class="mb-4">
+          <!-- <div class="mb-4">
             <label class="input__label">Logo o imagen de tu marca</label>
             <input
               v-model="publication.featuredImage"
@@ -99,13 +99,13 @@
               type="text"
               placeholder="https://images.unsplash.com/photo-1432303492674-642e9d0944b"
             />
-          </div>
+          </div> -->
           <div class="mb-4 text-right">
             <button
               @click.prevent="save"
               class="w-full bg-yellow-dark text-yellow-darker font-semibold py-3 px-6 rounded"
             >
-              Publicar
+              Guardar
             </button>
           </div>
         </form>
@@ -123,8 +123,8 @@ export default {
     return {
       publication: {
         title: "",
-        target: "",
-        typeOfProduct: "",
+        target: "Seleccionar",
+        typeOfProduct: "Seleccionar",
         otherType: "",
         url: "",
         otherUrl: "",
@@ -158,7 +158,9 @@ export default {
       };
 
       this.$store.dispatch("CREATE_ROOM", room).then(() => {
-        this.$router.push({ name: "SearchPage" });
+        // this.$router.push({ name: "SearchPage" });
+        this.$router.push({ name: "HomePage" });
+        this.$router.go();
       });
     }
   },

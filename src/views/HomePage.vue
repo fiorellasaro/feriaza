@@ -22,7 +22,21 @@
           </p>
           <p class="mb-3">(zines, stickers, postres, ropa, tatuajes, etc)</p>
 
-          <button class="btn__outline btn__outline--teal rounded mr-2 mb-3">POSTULAR</button>
+          <button class="btn__outline btn__outline--teal rounded mr-2 mb-3" @click="postulate">
+            POSTULAR
+          </button>
+          <div v-if="userBrandsCount < 1 && this.show && user">
+            <p class="text-red">No tiene marcas registradas, añade una y vuelve a postular :D</p>
+          </div>
+          <div v-else-if="this.show && user">
+            <p class="text-green">
+              ¡Bien! Acabas de postular, se comunicarán contigo si tu marca es seleccionada para el
+              evento!
+            </p>
+          </div>
+          <div v-else>
+            <p class="text-green"></p>
+          </div>
         </div>
       </div>
     </section>
@@ -60,18 +74,53 @@
 import { mapGetters } from "vuex";
 import DefaultLayout from "@/layouts/DefaultLayout.vue";
 import TinySlider from "@/components/TinySlider.vue";
+import firebase from "firebase";
 
 export default {
   name: "HomePage",
+  data() {
+    return {
+      show: false
+    };
+  },
   beforeCreate() {
     this.$store.dispatch("FETCH_ROOMS", 12);
   },
   computed: {
-    ...mapGetters(["rooms"])
+    ...mapGetters({
+      user: "authUser"
+    }),
+    userBrandsCount() {
+      // console.log(this.user !== null ? this.$store.getters.userRoomsCount(this.user[".key"]) : 0);
+      return this.user !== null ? this.$store.getters.userRoomsCount(this.user[".key"]) : 0;
+    }
   },
   components: {
     DefaultLayout,
     TinySlider
+  },
+  methods: {
+    postulate() {
+      this.user !== null ? (this.show = true) : (this.show = false);
+      if (this.userBrandsCount > 0) {
+        var updates = {};
+        updates["/users/" + firebase.auth().currentUser.uid + "/postulate/"] = 1;
+        firebase
+          .database()
+          .ref()
+          .update(updates);
+      }
+
+      // if (userBrandsCount > 1) {
+      // }
+      // this.$store.dispatch('FETCH_USER_POSTULATE', { id:this.user[".key"] })
+      // .then((res) => {
+
+      // });
+    }
+  },
+  created() {
+    this.show = false;
   }
 };
 </script>
@@ -101,8 +150,16 @@ export default {
   min-height: 30vh;
 }
 
-.text-justify{
+.text-justify {
   text-align: justify !important;
+}
+
+.text-red {
+  color: #d04545;
+}
+
+.text-green {
+  color: #3ebf7f;
 }
 
 @media screen and (max-width: 540px) {

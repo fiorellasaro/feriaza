@@ -1,6 +1,6 @@
 :root {
   --grid-layout-gap: 15px;
-  --font-family: 'Roboto', sans-serif;
+  --font-family: "Roboto", sans-serif;
 }
 
 body {
@@ -36,7 +36,7 @@ body {
 
 /** Buttons */
 .btn {
-  @apply bg-white text-grey-darkest font-semibold py-2 px-4 border border-grey-light rounded
+  @apply bg-white text-grey-darkest font-semibold py-2 px-4 border border-grey-light rounded;
 }
 
 .btn:hover {

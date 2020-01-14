@@ -65,12 +65,16 @@
           <toggle-input v-model="formLogin.rememberMe"></toggle-input>
           Recuérdame
         </div>
-        <div class="mb-4">
-          <button class="btn btn-primary mr-3 w-full">Iniciar sesión</button>
+        <div class="mb-4 align-button">
+          <button class="btn__outline btn__outline--teal rounded mr-2">
+                    Iniciar sesión
+          </button>
         </div>
       </form>
     </modal>
     <modal :show="modals.register" @close-modal="closeModalRegister">
+      <p class="title-brand-modal text-center">Feriaza</p>
+      <h2 class="text-grey-darkest font-light text-center mb-6">¡Se parte de esta comunidad!</h2>
       <form class="form" @submit.prevent="registerHandlerSubmit">
         <div class="mb-4">
           <label class="input__label" for="name">Nombre</label>
@@ -80,7 +84,7 @@
               id="name"
               v-model="formRegister.name"
               type="text"
-              placeholder="Señorite"
+              placeholder="Mi nombre"
             />
           </div>
         </div>
@@ -92,7 +96,7 @@
               id="lastname"
               v-model="formRegister.lastname"
               type="text"
-              placeholder="Apellido"
+              placeholder="Mi apellido"
             />
           </div>
         </div>
@@ -148,7 +152,7 @@
               id="email"
               v-model="formRegister.email"
               type="email"
-              placeholder="señorite@mimarca.com"
+              placeholder="minombre@mimarca.com"
             />
           </div>
         </div>
@@ -164,8 +168,11 @@
             />
           </div>
         </div>
-        <div class="mb-4">
-          <button class="btn w-full">Crear cuenta</button>
+        <div class="mb-4 align-button">
+          <button class="btn__outline btn__outline--teal rounded mr-2">
+                    Crear cuenta
+          </button>
+          <!-- <button class="btn w-full">Crear cuenta</button> -->
         </div>
       </form>
     </modal>
@@ -193,7 +200,7 @@ export default {
         email: "",
         name: "",
         lastname: "",
-        docType: "",
+        docType: "Seleccionar",
         docNumber: "",
         contactNumber: "",
         password: ""
@@ -298,6 +305,13 @@ export default {
 .center-container {
   width: 50% !important;
 }
+
+  .align-button {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center !important;
+    display: flex;
+  }
 
 @media (max-width: 576px) {
   .section__hero {

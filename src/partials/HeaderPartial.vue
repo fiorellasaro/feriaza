@@ -17,7 +17,11 @@
                 <div class="flex" v-if="user">
                   <div class="flex items-center mr-4">
                     <div class="text-sm">
-                      <p class="text-black leading-none">{{ user.name }}</p>
+                      <u
+                        ><p class="text-black leading-none pointer" @click="goProfile">
+                          {{ user.name }}
+                        </p></u
+                      >
                     </div>
                   </div>
                   <button
@@ -79,6 +83,9 @@ export default {
     },
     CreateHousePage() {
       this.$router.push({ name: "CreateHousePage" });
+    },
+    goProfile() {
+      this.$router.push({ name: "ProfilePage" });
     }
   },
   components: {
@@ -113,5 +120,9 @@ export default {
     -ms-flex-pack: center;
     justify-content: center !important;
   }
+}
+
+.pointer {
+  cursor: pointer;
 }
 </style>
