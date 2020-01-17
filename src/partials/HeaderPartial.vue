@@ -26,7 +26,7 @@
                   </div>
 
                   <button
-                    v-if="user.name == 'Valdo'"
+                    v-if="user.name == 'Valdomiro'"
                     class="btn__outline btn__outline--teal rounded mr-2 button-add"
                     @click.prevent="SearchPage"
                   >
