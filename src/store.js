@@ -159,5 +159,9 @@ export default new Vuex.Store({
     rooms: state => state.rooms,
     userRoomsCount: state => id =>
       state.users !== null ? countObjectProperties(state.users[id].rooms) : 0
+    ,
+    users: state => state.users,
+    userCount: state => id =>
+      state.users !== null ? countObjectProperties(state.users[id].rooms) : 0  
   }
 });

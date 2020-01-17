@@ -1,19 +1,5 @@
 <template>
   <page-layout>
-    <!-- <section class="py-4 bg-teal-dark">
-      <div class="container">
-        <form class="form">
-          <div class="form__field relative">
-            <i class="input-icon material-icons absolute text-grey-darker">search</i>
-            <input
-              class="input__search"
-              id="where"
-              type="text"
-              placeholder="Mexico City, Mexico">
-          </div>
-        </form>
-      </div>
-    </section> -->
     <section class="section__create py-6">
       <div class="container">
         <h1 class="text-3xl">Datos de tu marca</h1>

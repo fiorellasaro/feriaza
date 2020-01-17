@@ -24,13 +24,23 @@
                       >
                     </div>
                   </div>
+
                   <button
+                    v-if="user.name == 'Valdo'"
+                    class="btn__outline btn__outline--teal rounded mr-2 button-add"
+                    @click.prevent="SearchPage"
+                  >
+                    Ver postulantes
+                  </button>
+                  <button
+                    v-else
                     class="btn__outline btn__outline--teal rounded mr-2 button-add"
                     @click.prevent="CreateHousePage"
                   >
                     Añadir marca
                     <i class="material-icons">add</i>
                   </button>
+
                   <!-- <button class="mr-4 flex items-center">
                     <i class="material-icons">notifications</i>
                   </button> -->
@@ -79,10 +89,17 @@ export default {
       });
     },
     logOut() {
-      this.$store.dispatch("LOG_OUT");
+      this.$store.dispatch("LOG_OUT").then(() => {
+        // this.$router.push({ name: "SearchPage" });
+        this.$router.push({ name: "HomePage" });
+        this.$router.go();
+      });;
     },
     CreateHousePage() {
       this.$router.push({ name: "CreateHousePage" });
+    },
+    SearchPage() {
+      this.$router.push({ name: "SearchPage" });
     },
     goProfile() {
       this.$router.push({ name: "ProfilePage" });
