@@ -22,10 +22,11 @@
           </p>
           <p class="mb-3">(zines, stickers, postres, ropa, tatuajes, etc)</p>
 
-          <button class="btn__outline btn__outline--teal rounded mr-2 mb-3" @click="postulate">
+          <!-- <button class="btn__outline btn__outline--teal rounded mr-2 mb-3" @click="postulate">
             POSTULAR
-          </button>
-          <div v-if="userBrandsCount < 1 && this.show && user">
+          </button> -->
+            <p class="text-grey-darkest mb-3">Convocatoria finalizó</p>
+          <!-- <div v-if="userBrandsCount < 1 && this.show && user">
             <p class="text-red">No tiene marcas registradas, añade una y vuelve a postular :D</p>
           </div>
           <div v-else-if="this.show && user">
@@ -36,7 +37,7 @@
           </div>
           <div v-else>
             <p class="text-green"></p>
-          </div>
+          </div> -->
         </div>
       </div>
     </section>
