@@ -46,7 +46,7 @@
               v-model="formLogin.email"
               class="input__field"
               type="text"
-              placeholder="bruce.wayne@imnotbatman.org"
+              placeholder="Tu correo"
             />
           </div>
         </div>
